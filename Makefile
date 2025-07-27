@@ -24,12 +24,12 @@ backup:
 
 # Publish code to GitHub
 publish:
-	git push origin master
+	git push origin main
 
 
 # Convert Markdown to HTML
 md2html:
-	pandoc -s -r markdown -w html README.md -o README.html
+	pandoc -s -r markdown -w html docs/README-ar.md -o web/templates/README.html
 
 
 

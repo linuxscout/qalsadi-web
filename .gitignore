@@ -206,3 +206,6 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 /web/archive
+/.idea/.gitignore
+/.idea/
+/web/templates/README.html
