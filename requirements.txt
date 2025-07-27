@@ -1,5 +1,5 @@
+qalsadi>=0.5.1
 flask
-qalsadi
 tabulate
 arrand
 markdown

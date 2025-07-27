@@ -3,14 +3,14 @@ from werkzeug.exceptions import RequestEntityTooLarge
 from flask import copy_current_request_context
 import qalsadi.analex as qa
 from qalsadi.resultformatter import ResultFormatter
-from qalsadi.abstractresultformatter import AbstractResultFormatter
+
 import io
 from pyarabic import araby
-from tashaphyne.stemming import ArabicLightStemmer
+
 from qalsadi.lemmatizer import Lemmatizer
 import arrand.arrandom  # make sure you install this or mock it
-import mimetypes
-import markdown
+
+from utils import allowed_file, is_text_file, stemmerformatter, light_stemmer
 
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024  # 1 MB
@@ -20,42 +20,14 @@ app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024  # 1 MB
 latest_formatter = None
 
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
 
 @app.route("/docs")
 def docs():
     return render_template('docs.html')
-    # with open("docs.html", encoding="utf-8") as f:
-    #     md_content = f.read()
-    #     html_content = markdown.markdown(md_content, extensions=["fenced_code", "tables", "codehilite"])
-    #
-    # return render_template_string(
-    #     """
-    #     {% extends "base.html" %}
-    #     {% block title %}📄 التوثيق{% endblock %}
-    #     {% block content %}
-    #     <article class="prose dark:prose-invert max-w-none rtl text-right">
-    #         {{ content|safe }}
-    #     </article>
-    #     {% endblock %}
-    #     """,
-    #     content=html_content
-    # )
 
 
-@app.route('/evaluation')
-def evaluation():
-    return render_template('evaluation.html')
 
-@app.route('/settings')
-def settings():
-    return render_template('settings.html')
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -189,47 +161,6 @@ def handle_action(action, input_text="", output_format="", options=[]):
         output_format = "table"
         latest_formatter = None
     return  {"output":output, "output_format":output_format}
-
-ALLOWED_EXTENSIONS = {'txt'}
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-def is_text_file(file_storage):
-    mime_type = mimetypes.guess_type(file_storage.filename)[0]
-    return mime_type == 'text/plain'
-
-def light_stemmer(text):
-    """
-    LightStemming unsing Tashaphyne
-    """
-    result = []
-    als = ArabicLightStemmer()
-    word_list = als.tokenize(text)
-    for word in word_list:
-        #~listseg =  als.segment(word)
-        als.segment(word)
-        affix_list = als.get_affix_list()
-        for affix in affix_list:
-            result.append({'word':word, 'prefix':affix['prefix'],
-            'stem':affix['stem'], 'suffix':affix['suffix'],
-            'root':affix['root'], 'type':'-'}
-                          )
-    return result
-
-class stemmerformatter(AbstractResultFormatter):
-    def __init__(self,results):
-        self.results = results
-        assert self._is_valid_result_type(results)
-        # self.flat_results = [item.__dict__ for sublist in results for item in sublist]
-        self.all_fields = self._collect_all_fields()
-        self.used_fields = list(self.all_fields)  # default is all
-
-        self.profiles = {
-            "main": ["id", "word",  "prefix", "stem", "suffix", "root", "type"],
-            "all": self.all_fields,
-        }
 
 if __name__ == '__main__':
     app.run(debug=True, threaded=False)
