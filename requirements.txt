@@ -1,0 +1,8 @@
+flask
+qalsadi
+tabulate
+arrand
+markdown
+jinja2
+pyarabic
+tashaphyne
