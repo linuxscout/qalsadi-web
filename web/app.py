@@ -111,7 +111,7 @@ def index():
             latest_formatter = formatter
 
 
-    return render_template('home.html', text=input_text, output=output,
+    return render_template('index.html', text=input_text, output=output,
                            format=output_format,
                            selected_profile=profile,
                            action=action)
