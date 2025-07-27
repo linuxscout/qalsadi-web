@@ -40,7 +40,7 @@ def index():
     profile = "main"  # default
     action = ""
 
-    if request.method == 'POST':
+    if request.method == 'GET':
         # Handle uploaded file
         uploaded_file = request.files.get('textfile')
         if uploaded_file and allowed_file(uploaded_file.filename) and is_text_file(uploaded_file):
