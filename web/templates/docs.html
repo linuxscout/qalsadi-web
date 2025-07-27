@@ -1,6 +1,206 @@
 {% extends 'base.html' %}
 {% block title %}الصفحة الرئيسية{% endblock %}
 {% block content %}
-  <h1 class="text-2xl font-bold mb-4">مرحبًا بك في أداة التحليل الصرفي!</h1>
-  <p class="text-sm">استخدم الشريط الجانبي لتصفح الأدوات والميزات المختلفة.</p>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-cairo p-6 leading-relaxed max-w-4xl mx-auto">
+
+  <h1 class="text-3xl font-bold mb-4 text-center border-b pb-2 border-gray-300 dark:border-gray-700">
+    المحلل الصرفي القلصادي
+  </h1>
+
+ <section id="about" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
+  <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">ℹ️ حول المشروع</h2>
+
+  <p class="text-gray-700 dark:text-gray-200 mb-4">
+    <strong class="text-lg text-blue-700 dark:text-blue-400">واجهة القلصادي الويب</strong>
+    هي أداة تفاعلية لتحليل النصوص العربية صرفيًا، تم تطويرها باستخدام إطار العمل
+    <a href="https://flask.palletsprojects.com/" class="text-blue-600 dark:text-blue-400 underline">Flask</a>،
+    لتسهيل استخدام مكتبة
+    <a href="https://github.com/linuxscout/qalsadi" class="text-blue-600 dark:text-blue-400 underline">القلصادي</a>
+    عبر المتصفح مباشرة.
+  </p>
+
+  <p class="text-gray-700 dark:text-gray-200 mb-4">
+    🔤 <strong class="font-semibold">القلصادي</strong> مشروع مفتوح المصدر للتحليل الصرفي العربي يستخلص الخصائص الصرفية للكلمات،
+    يعتمد على <span class="font-semibold text-green-600 dark:text-green-400">طريقة القواعد (Rule-based)</span>.
+    يستند القلصادي إلى قاعدة بيانات لغوية غنية مبنية على
+    <a href="http://arramooz.sf.net" class="text-blue-600 dark:text-blue-400 underline">قاموس الراموز الوسيط</a>.
+  </p>
+
+  <p class="text-gray-700 dark:text-gray-200 mb-4">
+    🧠 لا يستخدم القلصادي أي نماذج تعلم آلي أو شبكات عصبية، بل يحلل الكلمة العربية وفقًا لقواعد صرفية واستخلاص الزوائد،
+    ويرجع إلى القاموس للتحقق من الكلمات.
+  </p>
+
+  <p class="text-gray-700 dark:text-gray-200 mb-4">
+    🔧 يُستخدم القلصادي في عدة مشاريع مفتوحة المصدر، من أهمها برنامج
+    <a href="http://tahadz.com/mishkal" class="text-blue-600 dark:text-blue-400 underline">مشكال النصوص العربية</a>،
+    المتخصص في تشكيل النصوص العربية.
+  </p>
+
+  <p class="text-gray-700 dark:text-gray-200 mb-4">
+    👨‍💻 <strong>المطور:</strong> د. طه زروقي
+  </p>
+
+  <p class="text-gray-700 dark:text-gray-200">
+    📎 <strong>رابط المشروع على GitHub:</strong><br>
+    👉 <a href="https://github.com/linuxscout/qalsadi" class="text-blue-600 dark:text-blue-400 underline">https://github.com/linuxscout/qalsadi</a>
+  </p>
+</section>
+
+
+  <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+  <h2 class="text-2xl font-semibold mb-3">تجربة</h2>
+  <p class="mb-6">
+    قريبًا على:
+    <a href="http://tahadadz.com/qalsadi" class="text-blue-600 dark:text-blue-400 underline">Tahadz.com</a>
+  </p>
+
+  <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+  <h2 class="text-2xl font-semibold mb-4">🚀 الميزات</h2>
+  <ul class="list-disc list-inside space-y-2 mb-6">
+    <li>🔍 تحليل صرفي للنصوص العربية (باستخدام <a href="http://github.com/linuxscout/qalsadi" class="text-blue-600 dark:text-blue-400 underline">محلل القلصادي الصرفي</a>)</li>
+    <li>📑 دعم تصدير النتائج بصيغ متعددة: جدول، CSV، JSON، XML</li>
+    <li>⌨️ عمليات إضافية لمعالجة النصوص:
+      <ul class="list-disc list-inside ml-6 mt-2 space-y-1 text-sm">
+        <li>التجذيع (باستخدام <a href="http://github.com/linuxscout/tashaphyne" class="text-blue-600 dark:text-blue-400 underline">Tashaphye</a>)</li>
+        <li>التقطيع إلى كلمات (باستخدام <a href="https://github.com/linuxscout/pyarabic" class="text-blue-600 dark:text-blue-400 underline">PyArabic</a>)</li>
+        <li>استخلاص الأصول (باستخدام القلصادي)</li>
+        <li>حذف التشكيل (باستخدام PyArabic)</li>
+        <li>فرز الكلمات</li>
+        <li>توليد نصوص عربية عشوائية (باستخدام <a href="https://github.com/linuxscout/Arrand-arabic-random-text" class="text-blue-600 dark:text-blue-400 underline">مكتبة الرند Arrand</a>)</li>
+      </ul>
+    </li>
+    <li>📥 إمكانية رفع ملفات نصية باللغة العربية</li>
+    <li>🗂️ عرض النتائج بناءً على تخصيص الحقول (main، all، root، lemma…)</li>
+  </ul>
+
+  <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+  <h2 class="text-2xl font-semibold mb-4">🛠️ أمثلة على العمليات</h2>
+  <ul class="list-disc list-inside space-y-2 mb-6">
+    <li><strong>تحليل صرفي</strong>: استخراج الخصائص الصرفية باستخدام القلصادي.</li>
+    <li><strong>تجذيع</strong>: استخراج الجذع باستخدام Tashaphye.</li>
+    <li><strong>تأصيل</strong>: الحصول على الأصل المعجمي باستخدام القلصادي.</li>
+    <li><strong>تقطيع Tokens</strong>: تجزئة الجمل العربية إلى كلمات.</li>
+    <li><strong>حذف التشكيل</strong>: إزالة التشكيل من النص باستخدام PyArabic.</li>
+    <li><strong>نص عربي عشوائي</strong>: توليد نص عربي عشوائي باستخدام  مكتبة الرند لتوليد النصوص العربية arrand.</li>
+  </ul>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+  <section id="download" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
+  <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">📥 التحميل</h2>
+
+  <p class="text-gray-700 dark:text-gray-200 mb-4">
+    يمكنك تحميل <strong class="text-green-700 dark:text-green-400">المكتبة البرمجية القلصادي</strong>
+    واستخدامها مباشرة ضمن مشاريع Python الخاصة بك، وذلك عبر تثبيتها من PyPI باستخدام الأمر التالي:
+  </p>
+
+  <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded font-mono text-sm text-gray-800 dark:text-gray-100 mb-4">
+    pip install qalsadi
+  </div>
+
+  <p class="text-gray-700 dark:text-gray-200 mb-4">
+    كما يمكنك أيضًا تحميل <strong class="text-blue-700 dark:text-blue-400">الكود المصدري الكامل</strong>
+    لواجهة الويب أو للمكتبة نفسها من مستودعات GitHub:
+  </p>
+
+  <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-200 mb-4">
+    <li>
+      🔗 <strong>مكتبة القلصادي (تحليل صرفي):</strong>
+      <a href="https://github.com/linuxscout/qalsadi" class="text-blue-600 dark:text-blue-400 underline">
+        https://github.com/linuxscout/qalsadi
+      </a>
+    </li>
+    <li>
+      🔗 <strong>واجهة الويب للقلصادي:</strong>
+      <a href="https://github.com/linuxscout/qalsadi-web" class="text-blue-600 dark:text-blue-400 underline">
+        https://github.com/linuxscout/qalsadi-web
+      </a>
+    </li>
+  </ul>
+
+  <p class="text-gray-700 dark:text-gray-200">
+    تتضمن المستودعات وثائق الاستخدام، وملفات الأمثلة، والتعليمات لتثبيت وتشغيل المشروع محليًا.
+  </p>
+</section>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+  <a name="projects"/><h2 class="text-2xl font-semibold mb-4">🧪 مشاريع لغوية</h2>
+  <ul class="list-disc list-inside space-y-2 mb-6">
+    <li><a href="http://tahadz.com/mishkal"><strong>مشكال النصوص العربية</strong></a></li>
+    <li><a href="http://qutrub.arabeyes.org"><strong>قطرب لتصريف الأفعال العربية</strong></a></li>
+    <li><a href="http://github.com/pyarabic"><strong>مكتبة بيثون للعربية</strong></a></li>
+    <li><a href="http://github.com/linuxscout/tashaphyne"><strong>مكتبة تاشفين للتجذيع الخفيف</strong></a></li>
+    <li><a href="http://github.com/linuxscout/arrand-arabic-random-text"><strong>مكتبة الرند لتوليد النصوص العشوائية العربية</strong></a></li>
+    <li><a href="http://tahadz.com"><strong>للمزيد من المشاريع والتطبيقات زوروا موقعنا</strong></a></li>
+  </ul>
+
+  <hr class="my-6 border-gray-300 dark:border-gray-700" />
+<section id="references" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-8">
+  <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">📚 مراجع للاستشهاد (Reference for Citation)</h2>
+
+  <div class="mb-4">
+    <pre class="bg-gray-100 dark:bg-gray-900 text-sm text-left p-4 rounded overflow-auto"><code>
+T. Zerrouki‏, Qalsadi, Arabic morphological analyzer Library for Python.
+https://pypi.python.org/pypi/qalsadi/
+    </code></pre>
+  </div>
+
+  <div class="mb-4">
+    <pre class="bg-gray-100 dark:bg-gray-900 text-sm text-left p-4 rounded overflow-auto"><code>
+Zerrouki, Taha. "Towards An Open Platform For Arabic Language Processing." (2020).
+    </code></pre>
+  </div>
+
+  <h3 id="bibtex" class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">BibTeX</h3>
+
+  <div class="mb-4">
+    <pre class="bg-gray-100 dark:bg-gray-900 text-sm text-left p-4 rounded overflow-auto"><code>@misc{zerrouki2012qalsadi,
+  title={qalsadi, Arabic morphological analyzer Library for python.},
+  author={Zerrouki, Taha},
+  url={https://pypi.python.org/pypi/qalsadi},
+  year={2012}
+}</code></pre>
+  </div>
+
+  <div class="mb-6">
+    <pre class="bg-gray-100 dark:bg-gray-900 text-sm text-left p-4 rounded overflow-auto"><code>@thesis{zerrouki2020towards,
+  title={Towards An Open Platform For Arabic Language Processing},
+  author={Zerrouki, Taha},
+  year={2020}
+}</code></pre>
+  </div>
+</section>
+  <hr class="my-6 border-gray-300 dark:border-gray-700" />
+<section id="evaluation" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+  <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">📊 التقييم</h2>
+  <p class="text-gray-700 dark:text-gray-200 mb-4">
+    قيّمنا أداء <strong>المحلل الصرفي القلصادي</strong> على <a href="http://alkhalil.oujda-nlp-team.net/Nemlar.php" class="text-blue-600 dark:text-blue-400 underline">مدونة Nemlar النصوص العربية الموسومة</a>، وركّزنا في هذا التقييم على مهمة <strong>استخلاص الأصول (lemmatization)</strong>. وقد حصلنا على النتائج التالية:
+  </p>
+
+  <ul class="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1 mb-4">
+    <li>✅ <strong>عدد الجمل الكلي:</strong> 20,726</li>
+    <li>✅ <strong>عدد الكلمات:</strong> 480,577</li>
+    <li>🟢 <strong>عدد التطابقات الصحيحة (بدون تشكيل):</strong> 412,934</li>
+    <li>🔵 <strong>عدد التطابقات الصحيحة (بالتشكيل):</strong> 347,092</li>
+  </ul>
+
+  <h3 id="accuracy" class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">🎯 معدلات الدقة</h3>
+  <ul class="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1">
+    <li><strong>الدقة بدون تشكيل:</strong> 85.92%</li>
+    <li><strong>الدقة مع التشكيل:</strong> 72.22%</li>
+  </ul>
+</section>
+
+  <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+  <h2 class="text-2xl font-semibold mb-4">📜 الرخصة</h2>
+  <p class="text-lg">هذا المشروع مفتوح المصدر وموزع بموجب رخصة <strong>GPL الإصدار 3</strong>.</p>
+
+</body>
+
 {% endblock %}

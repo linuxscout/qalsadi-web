@@ -14,6 +14,8 @@ import markdown
 
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024  # 1 MB
+# app.config['TEMPLATES_AUTO_RELOAD'] = True
+# app.jinja_env.cache = {}
 # Store results in memory (in a real app, use session or DB)
 latest_formatter = None
 
@@ -24,22 +26,23 @@ def home():
 
 @app.route("/docs")
 def docs():
-    with open("README.md", encoding="utf-8") as f:
-        md_content = f.read()
-        html_content = markdown.markdown(md_content, extensions=["fenced_code", "tables", "codehilite"])
-
-    return render_template_string(
-        """
-        {% extends "base.html" %}
-        {% block title %}📄 التوثيق{% endblock %}
-        {% block content %}
-        <article class="prose dark:prose-invert max-w-none rtl text-right">
-            {{ content|safe }}
-        </article>
-        {% endblock %}
-        """,
-        content=html_content
-    )
+    return render_template('docs.html')
+    # with open("docs.html", encoding="utf-8") as f:
+    #     md_content = f.read()
+    #     html_content = markdown.markdown(md_content, extensions=["fenced_code", "tables", "codehilite"])
+    #
+    # return render_template_string(
+    #     """
+    #     {% extends "base.html" %}
+    #     {% block title %}📄 التوثيق{% endblock %}
+    #     {% block content %}
+    #     <article class="prose dark:prose-invert max-w-none rtl text-right">
+    #         {{ content|safe }}
+    #     </article>
+    #     {% endblock %}
+    #     """,
+    #     content=html_content
+    # )
 
 
 @app.route('/evaluation')
